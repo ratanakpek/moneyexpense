@@ -1,20 +1,46 @@
 package ratanak.pek.moneyexpense
 
 import org.junit.Test
+import java.time.Clock
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.ZoneId
+import java.time.ZoneOffset
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.time.format.TextStyle
 import java.time.temporal.ChronoUnit
+import java.util.*
+
 
 /**
  *
  *
  * https://www.baeldung.com/java-8-date-time-intro
+ * https://www.baeldung.com/java-private-constructors#:~:text=Private%20constructors%20allow%20us%20to,is%20known%20as%20constructor%20delegation.
  */
 class DateFormatUtilTest {
+
+    @Test
+    fun `Test Clock class` (){
+        //How to find zone id
+        println(ZoneId.systemDefault())
+
+        ZoneId.SHORT_IDS.forEach {
+            println(it.key + "->" + it.value)
+        }
+
+        val zoneOffSet = ZoneOffset.of("+05:30")
+        val response: String = zoneOffSet.getDisplayName(
+            TextStyle.FULL,
+            Locale.ENGLISH
+        )
+        println(response)
+
+        val clock = Clock.systemDefaultZone()
+        println(clock.instant().plus(2, ChronoUnit.DAYS).epochSecond)
+    }
 
     //LocalDate	-> Represents a date (year, month, day (yyyy-MM-dd))
     @Test
