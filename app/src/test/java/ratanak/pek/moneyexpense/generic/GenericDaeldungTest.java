@@ -12,8 +12,6 @@ import java.util.stream.Collectors;
 //https://www.youtube.com/watch?v=K1iu1kXkVoA
 public class GenericDaeldungTest {
 
-
-
     @Test
     public void printTheList(){
         List<Integer> intList = new ArrayList<>();
@@ -21,11 +19,19 @@ public class GenericDaeldungTest {
         printList(intList);
         // printListSpecific(intList);
 
+        //using extend key -> is upper bound
+        List<Animal> animalList = new ArrayList<>();
+        animalList.add(new Cat());
+        printListSpecific(animalList);
+
         List<Cat> catList = new ArrayList<>();
         catList.add(new Cat());
-
         printListSpecific(catList);
 
+        //Using super key -> is lower bound
+        List<ParentAnimal> parentAnimalList = new ArrayList<>();
+        parentAnimalList.add(new Cat());
+        printListSuper(parentAnimalList);
 
     }
 
@@ -35,7 +41,11 @@ public class GenericDaeldungTest {
     }
 
     private void printListSpecific(List<? extends Animal> myList){
-        System.out.println();
+        System.out.println("Done");
+    }
+
+    private void printListSuper(List<? super Animal> myList){
+        System.out.println("Done");
     }
 
 
@@ -163,7 +173,11 @@ class GenericPrinter<T> {
     }
 }
 
-class Animal {
+class ParentAnimal{
+
+}
+
+class Animal extends ParentAnimal {
     String name;
     int age;
 
