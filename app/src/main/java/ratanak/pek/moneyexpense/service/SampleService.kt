@@ -6,7 +6,8 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import android.util.Log
-
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+//https://androidlearnersite.wordpress.com/2018/02/23/communicating-from-services/
 class SampleService : Service() {
 
     override fun onBind(intent: Intent?): IBinder? {
@@ -38,6 +39,14 @@ class SampleService : Service() {
                 stopSelf()
                 Log.e(TAG, ACTION_STOP)
             }
+            ACTION_SERVICE_WITH_BROADCAST -> {
+                Log.e(TAG, ACTION_SERVICE_WITH_BROADCAST)
+                val result = Intent().apply {
+                    putExtra("name", "Hello World")
+                    action = "BroadCastDemo"
+                }
+                LocalBroadcastManager.getInstance(this@SampleService).sendBroadcast(result)
+            }
         }
 
         return super.onStartCommand(intent, flags, startId)
@@ -52,6 +61,7 @@ class SampleService : Service() {
     }
 }
 
+const val ACTION_SERVICE_WITH_BROADCAST = "action_service_with_broadcast"
 const val ACTION_START = "action_start"
 const val ACTION_STOP = "action_stop"
 const val ACTION_PAUSE = "action_pause"
