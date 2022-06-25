@@ -1,13 +1,17 @@
 package ratanak.pek.moneyexpense
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import ratanak.pek.moneyexpense.databinding.ActivityMainBinding
+import ratanak.pek.moneyexpense.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,5 +35,17 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == HomeFragment.REQUEST_SERVICE_CODE && resultCode == Activity.RESULT_OK) {
+            Toast.makeText(
+                this,
+                "result ${data?.getStringExtra("result")}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
     }
 }

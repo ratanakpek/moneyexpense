@@ -9,6 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoneyExpense">
+
+        <service
+            android:name=".service.SampleService"
+            android:foregroundServiceType="mediaPlayback"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:exported="false"
+            android:description="@string/service_description"
+            android:label="RTKPK" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
