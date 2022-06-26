@@ -1,33 +1,14 @@
-package ratanak.pek.moneyexpense.cleancode
+package ratanak.pek.moneyexpense.cleancode.meaningfulname
 
-import org.junit.Assert
-import org.junit.Test
+//Why it exists, what it does, how it used
+// d -> reveal nothing
 
-class MeaningfulNameChapter2 {
-    //Why it exists, what it does, how it used
-    // d -> reveal nothing
+// elapsedTimeInDay
+// daysSinceCreation;
+// daysSinceModification;
+// fileAgeInDays
 
-    // elapsedTimeInDay
-    // daysSinceCreation;
-    // daysSinceModification;
-    // fileAgeInDays
-
-    @Test
-    fun mainFun() {
-        val containCell = Cell(
-            intArrayOf(4, 1, 5)
-        )
-        val cellList = mutableListOf(
-            Cell(intArrayOf(1, 2, 3)), Cell(intArrayOf(2, 3, 4)), containCell
-        )
-        val result = getFlaggedCell(cellList.toTypedArray())
-        Assert.assertEquals(
-            true, result.contains(
-                containCell
-            )
-        )
-    }
-
+class IntentionRevealingName {
     fun getFlaggedCell(gameBoards: Array<Cell>): MutableList<Cell> {
         val flaggedCell = mutableListOf<Cell>()
         for (cell in gameBoards) {
@@ -35,8 +16,6 @@ class MeaningfulNameChapter2 {
         }
         return flaggedCell
     }
-
-    val FLAG = 4
 
     fun getFlaggedCells(gameBoards: Array<List<Int>>): MutableList<List<Int>> {
         val result = mutableListOf<List<Int>>()
@@ -52,6 +31,10 @@ class MeaningfulNameChapter2 {
             if (item == 4) result.add(item)
         }
         return result
+    }
+
+    companion object {
+        const val FLAG = 4
     }
 }
 
