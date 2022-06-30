@@ -21,14 +21,14 @@ class Crush {
     //2. reason to change -> Use Another connection
     fun save() {
         val connectionMockUp = ConnectionMockUp()
-        connectionMockUp.openConnection()
         connectionMockUp.save(this)
-        connectionMockUp.closeConnection()
     }
 
-    //3. reason to change -> Change to mongo db
-    val sqlStatement: String = "INSERT INTO crush_table (id, name, age)\n" +
-            "VALUES ($id, $name, $age);"
+    fun getCrushSqlStatement(): String {
+        val prepareSqlStatement = PrepareSqlStatement()
+        return prepareSqlStatement.getSqlStatement(this)
+    }
+
 
     fun isSheCanBusiness(): Boolean = age > 18
 
@@ -56,4 +56,13 @@ class Crush {
                 )
         }
 
+}
+
+class PrepareSqlStatement {
+    fun getSqlStatement(crush: Crush): String {
+        crush.apply {
+            return "INSERT INTO crush_table (id, name, age)\n" +
+                    "VALUES ($formattedId, $validName, $validAge);"
+        }
+    }
 }

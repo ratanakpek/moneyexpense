@@ -4,14 +4,14 @@ import ratanak.pek.moneyexpense.experiment.solid.singleresponsibility.Crush
 
 class ConnectionMockUp {
     fun save(data: Crush) {
-        println("Open connection...")
+        openConnection()
 
         println("Do sql statement...")
 
-        val sqlStatement = SqlExecutor(data.sqlStatement)
+        val sqlStatement = SqlExecutor(data.getCrushSqlStatement())
         sqlStatement.start()
 
-        println("Close connection...")
+        closeConnection()
 
         println("Successfully...")
     }
