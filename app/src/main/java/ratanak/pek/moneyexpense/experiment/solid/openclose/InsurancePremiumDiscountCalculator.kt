@@ -1,31 +1,31 @@
 package ratanak.pek.moneyexpense.experiment.solid.openclose
 
+import kotlin.random.Random
+
 class InsurancePremiumDiscountCalculator {
-    fun calculatePremiumDiscount(profile: HealthInsuranceCustomerProfile): Int {
+    fun calculatePremiumDiscount(profile: CustomerProfile): Int {
         return if (profile.isLocalCustomer()) {
             1
         } else {
             -1
         }
     }
+}
 
-    fun calculatePremiumDiscount(profile: HouseInsuranceCustomerProfile): Int {
-        return if (profile.isLocalCustomer()) {
-            2
-        } else {
-            -1
-        }
+class HouseInsuranceCustomerProfile : CustomerProfile {
+    override fun isLocalCustomer(): Boolean {
+        return Random.nextBoolean()
     }
 }
 
-class HouseInsuranceCustomerProfile {
-    fun isLocalCustomer(): Boolean {
-        return true
+class HealthInsuranceCustomerProfile : CustomerProfile {
+    override fun isLocalCustomer(): Boolean {
+        return Random.nextBoolean()
     }
 }
 
-class HealthInsuranceCustomerProfile {
-    fun isLocalCustomer(): Boolean {
-        return true
+class VehicleInsuranceCustomerProfile : CustomerProfile {
+    override fun isLocalCustomer(): Boolean {
+        return Random.nextBoolean()
     }
 }
