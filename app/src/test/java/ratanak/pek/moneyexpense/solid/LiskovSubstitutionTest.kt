@@ -17,9 +17,7 @@ class LiskovSubstitutionTest {
         val carList = mutableListOf(carA, carB, racingCar)
 
         for(car in carList){
-            //racing car dont have getcabin width, so it is issue
-            // in order to fix we need to find more generic for this
-           println(car.getCabinWith())
+           println(car.getInteriorWith())
         }
 
     }
