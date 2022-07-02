@@ -1,30 +1,30 @@
 package ratanak.pek.moneyexpense.experiment.solid.interfacesegregation
 
-interface IMultiFunction {
+//interface IMultiFunction {
+//    fun print()
+//    fun getPrintPoolDetail()
+//    fun scan()
+//    fun scanPhoto()
+//    fun fax()
+//    fun internetFax()
+//}
+
+interface IPrintable {
     fun print()
     fun getPrintPoolDetail()
+}
+
+interface IScannable {
     fun scan()
     fun scanPhoto()
+}
+
+interface IFaxable {
     fun fax()
     fun internetFax()
 }
 
-class FaxMachine : IMultiFunction {
-    override fun print() {
-        //ignore
-    }
-
-    override fun getPrintPoolDetail() {
-        //ignore
-    }
-
-    override fun scan() {
-        //ignore
-    }
-
-    override fun scanPhoto() {
-        //ignore
-    }
+class FaxMachine : IFaxable {
 
     override fun fax() {
         TODO("Not yet implemented")
@@ -36,14 +36,7 @@ class FaxMachine : IMultiFunction {
 
 }
 
-class ScanMachine : IMultiFunction {
-    override fun print() {
-        //ignore
-    }
-
-    override fun getPrintPoolDetail() {
-        //ignore
-    }
+class ScanMachine : IScannable {
 
     override fun scan() {
         TODO("Not yet implemented")
@@ -53,17 +46,10 @@ class ScanMachine : IMultiFunction {
         TODO("Not yet implemented")
     }
 
-    override fun fax() {
-        //ignore
-    }
-
-    override fun internetFax() {
-        //ignore
-    }
 
 }
 
-class SuperPrinter : IMultiFunction {
+class SuperPrinter : IPrintable, IScannable, IFaxable {
     override fun print() {
         TODO("Not yet implemented")
     }
