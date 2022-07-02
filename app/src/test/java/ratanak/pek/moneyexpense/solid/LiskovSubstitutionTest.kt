@@ -17,7 +17,7 @@ class LiskovSubstitutionTest {
 
         for (product in productList) {
             //It is asking what type, in order to calculate the discount
-            if (product is InHouseProduct) product.applyExtraDiscount()
+           // if (product is InHouseProduct) product.applyExtraDiscount()
             println("Discount rate = " + product.getProductDiscount() + "%")
         }
     }
