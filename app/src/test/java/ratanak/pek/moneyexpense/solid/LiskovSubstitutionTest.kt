@@ -1,13 +1,31 @@
 package ratanak.pek.moneyexpense
 
 import org.junit.Test
+import ratanak.pek.moneyexpense.experiment.solid.liskovsubstitution.Car
 import ratanak.pek.moneyexpense.experiment.solid.liskovsubstitution.InHouseProduct
 import ratanak.pek.moneyexpense.experiment.solid.liskovsubstitution.Product
+import ratanak.pek.moneyexpense.experiment.solid.liskovsubstitution.RacingCar
 
 class LiskovSubstitutionTest {
 
     @Test
-    fun `Liskov Substitution Principle`() {
+    fun `Liskov Substitution Principle --- Break the hierachy`() {
+        val carA = Car()
+        val carB = Car()
+
+        val racingCar = RacingCar()
+        val carList = mutableListOf(carA, carB, racingCar)
+
+        for(car in carList){
+            //racing car dont have getcabin width, so it is issue
+            // in order to fix we need to find more generic for this
+           println(car.getCabinWith())
+        }
+
+    }
+
+    @Test
+    fun `Liskov Substitution Principle --- Tell, Don't Ask`() {
         val productA = Product()
         val productB = Product()
 
@@ -17,7 +35,7 @@ class LiskovSubstitutionTest {
 
         for (product in productList) {
             //It is asking what type, in order to calculate the discount
-           // if (product is InHouseProduct) product.applyExtraDiscount()
+            // if (product is InHouseProduct) product.applyExtraDiscount()
             println("Discount rate = " + product.getProductDiscount() + "%")
         }
     }
