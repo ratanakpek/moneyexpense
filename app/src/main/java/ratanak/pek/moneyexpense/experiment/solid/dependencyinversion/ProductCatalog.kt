@@ -1,10 +1,20 @@
 package ratanak.pek.moneyexpense.experiment.solid.dependencyinversion
 
-class ProductCatalog {
-    //ProductCatalog is depending to other SqlProductionRepository
-    private var sqlProductionRepository = SqlProductionRepository()
+class ProductCatalog(var productionRepository: ProductionRepository) {
 }
 
-class SqlProductionRepository {
+object ProductFactory {
+    fun create() = SqlProductionRepository()
+}
+
+
+interface ProductionRepository {
+    fun getData(): String
+}
+
+class SqlProductionRepository : ProductionRepository {
+    override fun getData(): String {
+        return "Banana, wine, book"
+    }
 
 }
