@@ -1,4 +1,4 @@
-package ratanak.pek.moneyexpense
+package ratanak.pek.moneyexpense.presentation
 
 import android.app.Activity
 import android.content.BroadcastReceiver
@@ -14,11 +14,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ratanak.pek.moneyexpense.R
 import ratanak.pek.moneyexpense.databinding.ActivityMainBinding
-import ratanak.pek.moneyexpense.service.ACTION_SERVICE_WITH_BROADCAST
-import ratanak.pek.moneyexpense.service.ACTION_START
-import ratanak.pek.moneyexpense.service.SampleService
-import ratanak.pek.moneyexpense.ui.home.HomeFragment
+import ratanak.pek.moneyexpense.experiment.service.ACTION_SERVICE_WITH_BROADCAST
+import ratanak.pek.moneyexpense.experiment.service.SampleService
+import ratanak.pek.moneyexpense.presentation.ui.home.HomeFragment
 
 
 class MainActivity : AppCompatActivity() {

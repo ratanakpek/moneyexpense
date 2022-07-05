@@ -11,7 +11,7 @@
         android:theme="@style/Theme.MoneyExpense">
 
         <service
-            android:name=".service.SampleService"
+            android:name="ratanak.pek.moneyexpense.experiment.service.SampleService"
             android:foregroundServiceType="mediaPlayback"
             android:icon="@drawable/ic_home_black_24dp"
             android:exported="false"
@@ -19,7 +19,7 @@
             android:label="RTKPK" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

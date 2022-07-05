@@ -1,19 +1,17 @@
-package ratanak.pek.moneyexpense.ui.home
+package ratanak.pek.moneyexpense.presentation.ui.home
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ratanak.pek.moneyexpense.databinding.FragmentHomeBinding
-import ratanak.pek.moneyexpense.service.ACTION_START
-import ratanak.pek.moneyexpense.service.EXTRA_PENDING_INTENT
-import ratanak.pek.moneyexpense.service.SampleService
+import ratanak.pek.moneyexpense.experiment.service.ACTION_START
+import ratanak.pek.moneyexpense.experiment.service.EXTRA_PENDING_INTENT
+import ratanak.pek.moneyexpense.experiment.service.SampleService
 
 class HomeFragment : Fragment() {
 

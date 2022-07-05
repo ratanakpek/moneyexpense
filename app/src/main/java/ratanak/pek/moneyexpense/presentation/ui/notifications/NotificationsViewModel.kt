@@ -1,4 +1,4 @@
-package ratanak.pek.moneyexpense.ui.notifications
+package ratanak.pek.moneyexpense.presentation.ui.notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
