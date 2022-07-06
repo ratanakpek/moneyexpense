@@ -5,5 +5,6 @@ data class Expanse(
     var title: String,
     var amount: Double,
     var description: String,
-    var createdDate: String
+    var createdDate: Long,
+    var updateTime: Long
 )
