@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="ratanak.pek.moneyexpense.presentation.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/gotoExpanseDetail"
+            app:destination="@id/expanseDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +26,14 @@
         android:name="ratanak.pek.moneyexpense.presentation.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/expanseDetailFragment"
+        android:name="ratanak.pek.moneyexpense.presentation.ui.expanse.ExpanseDetailFragment"
+        android:label="fragment_expanse_detail"
+        tools:layout="@layout/fragment_expanse_detail" >
+        <argument
+            android:name="expanseId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>
