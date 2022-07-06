@@ -1,14 +1,7 @@
 package ratanak.pek.moneyexpense.presentation
 
-import android.app.Activity
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -16,9 +9,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ratanak.pek.moneyexpense.R
 import ratanak.pek.moneyexpense.databinding.ActivityMainBinding
-import ratanak.pek.moneyexpense.experiment.service.ACTION_SERVICE_WITH_BROADCAST
-import ratanak.pek.moneyexpense.experiment.service.SampleService
-import ratanak.pek.moneyexpense.presentation.ui.home.HomeFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -44,46 +34,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        registerBroadcastReceiver()
     }
 
-    fun registerBroadcastReceiver() {
-        val intent = Intent(ACTION_SERVICE_WITH_BROADCAST)
-        intent.setClass(this@MainActivity, SampleService::class.java)
-        startService(intent)
-    }
-
-    var receiver: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent) {
-            Toast.makeText(
-                this@MainActivity,
-                intent.getStringExtra("name"),
-                Toast.LENGTH_LONG
-            ).show()
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        LocalBroadcastManager.getInstance(this@MainActivity)
-            .registerReceiver(receiver, IntentFilter("BroadCastDemo"))
-    }
-
-    override fun onStop() {
-        super.onStop()
-        LocalBroadcastManager.getInstance(this@MainActivity).unregisterReceiver(receiver)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == HomeFragment.REQUEST_SERVICE_CODE && resultCode == Activity.RESULT_OK) {
-            Toast.makeText(
-                this,
-                "result ${data?.getStringExtra("result")}",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-
-    }
 }
 

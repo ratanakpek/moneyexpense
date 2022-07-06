@@ -6,38 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/pendingIntentService"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:text="PendingIntent Service"
-        android:textSize="20sp"
-        android:padding="8dp"
-        android:background="#D81717"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="#fff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/stop_service"
-        android:layout_width="match_parent"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:textColor="#fff"
-        android:padding="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="#D5841E"
-        android:textAlignment="center"
-        android:text="Stop Service"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pendingIntentService" />
+        app:layout_constraintBottom_toBottomOf="@+id/rvList"
+        app:layout_constraintEnd_toEndOf="@+id/rvList"
+        app:layout_constraintStart_toStartOf="@+id/rvList"
+        app:layout_constraintTop_toTopOf="@+id/rvList" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addExpanse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/ic_create"
+        android:layout_marginEnd="@dimen/small"
+        android:layout_marginBottom="@dimen/small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
