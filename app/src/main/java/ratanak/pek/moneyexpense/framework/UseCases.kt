@@ -6,7 +6,7 @@ import ratanak.pek.core.usecase.GetExpanse
 import ratanak.pek.core.usecase.RemoveExpanse
 
 data class UseCases(
-    val createExpanse: CreateExpanse,
+    var createExpanse: CreateExpanse,
     val getAllExpanse: GetAllExpanse,
     val getExpanse: GetExpanse,
     val removeExpanse: RemoveExpanse

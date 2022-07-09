@@ -4,5 +4,5 @@ import ratanak.pek.core.data.Expanse
 import ratanak.pek.core.repository.ExpanseRepository
 
 class CreateExpanse(private val expanseRepository: ExpanseRepository) {
-    suspend operator fun invoke(expanse: Expanse) = expanseRepository.addExpanse(expanse)
+    open suspend operator fun invoke(expanse: Expanse) = expanseRepository.addExpanse(expanse)
 }
