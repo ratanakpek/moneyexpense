@@ -1,0 +1,10 @@
+Builder Pattern
+-   is a creational design pattern that lets you construct complex objects step by step. It allows you to produce different typs and representations of an object using the same construction code.
+
+Link:
+https://refactoring.guru/design-patterns/builder
+
+WHen to use:
+- To replace overload constructor/field access
+- To encapsulate the data
+-
