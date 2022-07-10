@@ -1,0 +1,20 @@
+
+Function is a block of code which only runs when it is called.
+    -   Small =  function should be small and second rule the function should be smaller than that
+    -   Do one thing = function should do one thing. They should do it well. They should do it only.
+    -   Reading code from top to bottom
+    -   Function should have only 3 arguments only:
+        -   Monadic = one arg
+        -   Dyadic = two arg
+        -   Triads = three arg
+    - Prefer Exceptions to returning Error Codes:
+        -   If use error code, if there new error code, we need to write code add new error code in the class and redeploy the code
+        -   If use Exception, all errors code will handle securely by exception, no crash, no need publish app
+    - Do repeat yourself = Do only one thing keep in our mind
+
+
+    Step to write function:
+    1. Draft your method
+    2. Put it into code
+    3. Create small unit test -> important
+    4. Change name and complete the function
