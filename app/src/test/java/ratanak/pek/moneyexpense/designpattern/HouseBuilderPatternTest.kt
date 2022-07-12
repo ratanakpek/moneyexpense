@@ -1,5 +1,6 @@
 package ratanak.pek.moneyexpense.designpattern
 
+import org.junit.Assert
 import org.junit.Test
 import ratanak.pek.moneyexpense.experiment.designpattern.builder.*
 
@@ -12,7 +13,10 @@ class HouseBuilderPatternTest {
         val director = Director(builderOne)
         director.changeBuilder(builderTwo)
         director.make("simple")
-        val result = builderOne.getResult()
+        val result = builderTwo.getResult()
+
+        Assert.assertEquals(true, result.isReset)
+        Assert.assertEquals("buildStepA 2", result.stepState)
     }
 
 }
