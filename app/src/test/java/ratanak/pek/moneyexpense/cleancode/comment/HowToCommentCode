@@ -1,1 +1,20 @@
 How to comment code properly
+
+    - to compensate 4 our failure to express ourself
+    - Inaccurate comments are far worse than no comment at all
+    - Truth can only be found in one place: THE CODE
+
+1. Comments DO NOT MAKE UP for bad code -> Better to rewrite it
+2. Explain yourself in code -> Function, class name should be descriptive and explain itself
+3. Good comments:
+    - Legal Comment -> Author information, copy right...
+    - Informative comments -> Explain the result of Pattern
+    - Clarification -> They print the result for reader to see and understand //assertTrue(a.compareTo(a) ==0); // a==a
+    - Todo comments
+    - Javadocs in Public api
+
+4. Bad comments:
+    - Mumbling = Comment but let others programmers might have confusion, so please comment it clearly
+    - Redundant Comments = If we put a very descriptive name on variable or class, so we don't need put more comment to explain it
+    - Misleading Comments
+    - Mandated Comments = Just read code, programmer can understand but bec java api doc require to write comment, so it might redundant -> no need in this case
