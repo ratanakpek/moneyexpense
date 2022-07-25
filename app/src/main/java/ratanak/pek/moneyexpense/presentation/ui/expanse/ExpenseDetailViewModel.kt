@@ -2,7 +2,6 @@ package ratanak.pek.moneyexpense.presentation.ui.expanse
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,15 +32,8 @@ class ExpenseDetailViewModel(application: Application) : AndroidViewModel(applic
     fun saveExpense(expanse: Expanse) {
         coroutineScope.launch {
             usecase.createExpanse.invoke(expanse)
-
-          //  launch(Dispatchers.Main) {
-                saved.postValue(true)
-          //  }
+            saved.postValue(true)
         }
     }
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
 }

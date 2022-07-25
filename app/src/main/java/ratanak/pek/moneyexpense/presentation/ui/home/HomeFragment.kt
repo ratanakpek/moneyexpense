@@ -7,33 +7,52 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import ratanak.pek.moneyexpense.databinding.FragmentHomeBinding
+import ratanak.pek.moneyexpense.presentation.utils.adapters.ExpenseListAdapter
 
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var _binding: FragmentHomeBinding
+    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var _adapter: ExpenseListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
+        homeViewModel =
             ViewModelProvider(this)[HomeViewModel::class.java]
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        binding.addExpanse.setOnClickListener {
+        _binding.addExpanse.setOnClickListener {
             gotoExpanseDetail()
         }
-
-        return root
+        return _binding.root
     }
 
-    fun gotoExpanseDetail(id: Int = 0) {
-        val action = HomeFragmentDirections.gotoExpanseDetail(id)
-        Navigation.findNavController(binding.rvList).navigate(action)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        homeViewModel.getExpenseList()
+        observeExpenseList()
+        setupAdapter()
+    }
+
+    private fun setupAdapter() {
+        _adapter = ExpenseListAdapter(ArrayList())
+        _binding.rvList.adapter = _adapter
+        _binding.rvList.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun observeExpenseList() {
+        homeViewModel.allExpense.observe(requireActivity()) {
+            _adapter.add(it)
+        }
+    }
+
+    private fun gotoExpanseDetail(id: Int = 0) {
+        HomeFragmentDirections.gotoExpanseDetail(id).also {
+            Navigation.findNavController(_binding.rvList).navigate(it)
+        }
     }
 }
