@@ -5,3 +5,9 @@ Should find one concept of arrange the code for the whole project, for Android s
 - Code formatting is first order of business (វាជាការងារយើង ចឹងត្រូវមានទំនួសខុសត្រូវ ពេលយើងសរសេកូដ
     យើងសរសេសំរាប់អ្នកដទៃអានដែរ មិនមែនតែខ្លួនឯងទេ)-> don't think "get it work" is first order of your business
 - Code is a communication between other professional developer
+
+
+* Local variable should be place at the top of the function or method
+* Instance Variable should be place at the top of the class
+
+ - Dependent Function: the caller function should be above of callee function

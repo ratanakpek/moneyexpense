@@ -5,10 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ratanak.pek.core.data.Expanse
 import ratanak.pek.moneyexpense.databinding.ItemExpenseViewBinding
+import ratanak.pek.moneyexpense.presentation.utils.callback.ListAction
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ExpenseListAdapter(private val expenseList: ArrayList<Expanse>) :
+class ExpenseListAdapter(
+    private val expenseList: ArrayList<Expanse>,
+    private val callback: ListAction
+) :
     RecyclerView.Adapter<ExpenseListAdapter.ExpenseViewHolder>() {
     inner class ExpenseViewHolder(val binding: ItemExpenseViewBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -32,6 +36,10 @@ class ExpenseListAdapter(private val expenseList: ArrayList<Expanse>) :
             val sdf = SimpleDateFormat("MMM dd, HH:mm:ss")
             val resultDate = Date(this.updateTime)
             holder.binding.tvLastUpdate.text = "Last updated: ${sdf.format(resultDate)}"
+            holder.binding.root.rootView.setOnClickListener {
+                callback.onClick(this.id)
+            }
+            holder.binding.tvPrice.text = "${this.amount} $"
         }
     }
 

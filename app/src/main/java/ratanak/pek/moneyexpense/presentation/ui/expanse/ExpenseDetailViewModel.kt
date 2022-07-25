@@ -1,6 +1,7 @@
 package ratanak.pek.moneyexpense.presentation.ui.expanse
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
@@ -28,11 +29,18 @@ class ExpenseDetailViewModel(application: Application) : AndroidViewModel(applic
     )
 
     val saved = MutableLiveData<Boolean>()
+    val currentExpense = MutableLiveData<Expanse?>()
 
     fun saveExpense(expanse: Expanse) {
         coroutineScope.launch {
             usecase.createExpanse.invoke(expanse)
             saved.postValue(true)
+        }
+    }
+
+    fun getExpanse(id: Int){
+        coroutineScope.launch {
+            currentExpense.postValue(usecase.getExpanse.invoke(id))
         }
     }
 
