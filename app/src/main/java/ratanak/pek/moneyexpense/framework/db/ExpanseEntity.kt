@@ -26,7 +26,8 @@ data class ExpanseEntity(
             expense.description,
             expense.amount,
             expense.createdDate,
-            expense.updateTime
+            expense.updateTime,
+            expense.id
         )
     }
 
