@@ -1,11 +1,13 @@
 package ratanak.pek.moneyexpense.presentation.ui.expanse
 
 
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -31,52 +33,53 @@ class ExpanseDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel = ViewModelProviders.of(requireActivity()).get(ExpenseDetailViewModel::class.java)
-
+        viewModel = ViewModelProviders.of(this).get(ExpenseDetailViewModel::class.java)
         _binding?.let { binding ->
             binding.btnSave.setOnClickListener {
-                if (binding.edtTitle.text.toString() != ""
-                    || binding.edtAmount.text.toString() != ""
-                    || binding.edtDesc.text.toString() != ""
-                ) {
-                    val time = System.currentTimeMillis()
+                if (isAllEditNotEmpty()) {
                     currentExpense.title = binding.edtTitle.text.toString()
                     currentExpense.amount = binding.edtAmount.text.toString().toDouble()
                     currentExpense.description = binding.edtDesc.text.toString()
+
+                    val time = System.currentTimeMillis()
                     currentExpense.updateTime = time
                     if (currentExpense.id == 0) {
                         currentExpense.createdDate = time
                     }
 
                     viewModel.saveExpense(currentExpense)
-                    observeViewModel()
-
                 } else {
                     Navigation.findNavController(binding.btnSave).popBackStack()
                 }
-
             }
         }
+        observeViewModel()
+    }
 
-
+    private fun isAllEditNotEmpty(): Boolean {
+        _binding?.let {
+            return it.edtTitle.text.isNotEmpty()
+                    || it.edtAmount.text.isNotEmpty()
+                    || it.edtDesc.text.isNotEmpty()
+        }
+        return false
     }
 
     private fun observeViewModel() {
         viewModel.saved.observe(requireActivity(), Observer {
             Log.e("rtk", "Thread name " + Thread().name)
             if (it) {
-                //TODO
-                this@ExpanseDetailFragment._binding?.let {view ->
-                    Toast.makeText(view.edtTitle.context, "Done!", Toast.LENGTH_LONG).show()
-                  //  Navigation.findNavController(view.edtTitle).popBackStack()
-                }
-
+                Toast.makeText(_binding?.btnSave?.context, "Done!", Toast.LENGTH_SHORT).show()
+                hideKeyboard()
+                Navigation.findNavController(_binding?.btnSave!!).popBackStack()
             } else {
-                Toast.makeText(requireContext(), "Something went wrong!", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Something went wrong!", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-
+    private fun hideKeyboard() {
+        val imm = context?.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(_binding?.btnSave?.windowToken, 0)
+    }
 }

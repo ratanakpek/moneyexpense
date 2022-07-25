@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/medium"
     tools:context=".presentation.ui.expanse.ExpanseDetailFragment">
 
 
@@ -26,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@id/edtTitle"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:hint="Amount" />
 
     <EditText

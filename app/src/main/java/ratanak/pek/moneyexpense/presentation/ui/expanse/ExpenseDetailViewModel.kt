@@ -34,10 +34,9 @@ class ExpenseDetailViewModel(application: Application) : AndroidViewModel(applic
         coroutineScope.launch {
             usecase.createExpanse.invoke(expanse)
 
-            launch(Dispatchers.Main) {
+          //  launch(Dispatchers.Main) {
                 saved.postValue(true)
-            }
-
+          //  }
         }
     }
 
