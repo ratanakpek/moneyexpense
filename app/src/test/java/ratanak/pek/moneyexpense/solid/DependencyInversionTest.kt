@@ -15,3 +15,22 @@ class DependencyInversionTest {
     }
 
 }
+
+//https://www.baeldung.com/solid-principles
+class Windows98Machine {
+    //Keyboard & monitor are interface = abstraction -> so it is not depend on concrete class anymore
+    private val keyboard: IKeyboard
+    private val monitor: IMonitor
+
+    init {
+        //Monitor & StandardKeyboard are concrete class
+        monitor = Monitor()
+        keyboard = StandardKeyboard()
+    }
+}
+
+interface IKeyboard
+class StandardKeyboard : IKeyboard
+
+interface IMonitor
+class Monitor : IMonitor
