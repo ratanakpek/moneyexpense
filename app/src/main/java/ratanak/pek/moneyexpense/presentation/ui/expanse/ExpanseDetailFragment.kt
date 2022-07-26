@@ -99,7 +99,7 @@ class ExpanseDetailFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.bottom_nav_menu, menu)
+        inflater.inflate(R.menu.delete_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
