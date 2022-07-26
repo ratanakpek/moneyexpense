@@ -38,9 +38,16 @@ class ExpenseDetailViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
-    fun getExpanse(id: Int){
+    fun getExpanse(id: Int) {
         coroutineScope.launch {
             currentExpense.postValue(usecase.getExpanse.invoke(id))
+        }
+    }
+
+    fun deleteExpense(expanse: Expanse) {
+        coroutineScope.launch {
+            usecase.removeExpanse.invoke(expanse)
+            saved.postValue(true)
         }
     }
 

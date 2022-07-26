@@ -1,12 +1,11 @@
 package ratanak.pek.moneyexpense.presentation.ui.expanse
 
 
+import android.app.AlertDialog
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
@@ -15,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import ratanak.pek.core.data.Expanse
+import ratanak.pek.moneyexpense.R
 import ratanak.pek.moneyexpense.databinding.FragmentExpanseDetailBinding
 
 class ExpanseDetailFragment : Fragment() {
@@ -23,6 +23,11 @@ class ExpanseDetailFragment : Fragment() {
     private var currentExpense = Expanse(0, "", 10.0, "", 0, 0)
 
     private lateinit var _binding: FragmentExpanseDetailBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +41,6 @@ class ExpanseDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let {
             noteId = ExpanseDetailFragmentArgs.fromBundle(it).expanseId
-            Log.e("rtk", "noteId $noteId")
         }
         // viewModel = ViewModelProviders.of(this).get(ExpenseDetailViewModel::class.java)
         viewModel = ViewModelProvider(this)[ExpenseDetailViewModel::class.java]
@@ -92,5 +96,31 @@ class ExpanseDetailFragment : Fragment() {
     private fun hideKeyboard() {
         val imm = context?.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(_binding.btnSave.windowToken, 0)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.bottom_nav_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_delete -> {
+                if (noteId != 0) {
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("Delete")
+                        .setMessage("Are you sure to delete this?")
+                        .setPositiveButton(
+                            "Yes"
+                        ) { dialog, which -> viewModel.deleteExpense(currentExpense) }
+                        .setNegativeButton(
+                            "No"
+                        ) { dialog, which -> dialog.dismiss() }
+                        .create()
+                        .show()
+                }
+            }
+        }
+        return true
     }
 }

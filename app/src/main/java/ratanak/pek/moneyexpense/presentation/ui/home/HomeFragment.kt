@@ -1,14 +1,15 @@
 package ratanak.pek.moneyexpense.presentation.ui.home
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import ratanak.pek.moneyexpense.R
 import ratanak.pek.moneyexpense.databinding.FragmentHomeBinding
 import ratanak.pek.moneyexpense.presentation.utils.adapters.ExpenseListAdapter
 import ratanak.pek.moneyexpense.presentation.utils.callback.ListAction
@@ -18,6 +19,7 @@ class HomeFragment : Fragment(), ListAction {
     private lateinit var _binding: FragmentHomeBinding
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var _adapter: ExpenseListAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,7 +61,7 @@ class HomeFragment : Fragment(), ListAction {
     }
 
     override fun onClick(id: Int) {
-        Log.e("rtk", "id $id")
         gotoExpanseDetail(id)
     }
+
 }
