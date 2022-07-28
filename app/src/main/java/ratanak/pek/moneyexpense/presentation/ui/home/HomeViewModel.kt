@@ -14,6 +14,7 @@ import javax.inject.Inject
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
+
     @Inject
     lateinit var usecase: UseCases
 
@@ -28,7 +29,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getExpenseList() {
         coroutineScope.launch {
-            allExpense.postValue(usecase.getAllExpanse.invoke())
+            val expenseList = usecase.getAllExpanse.invoke()
+            expenseList.forEach {
+                it.wordCount = usecase.getWordCount.invoke(it)
+            }
+            allExpense.postValue(expenseList)
         }
     }
 

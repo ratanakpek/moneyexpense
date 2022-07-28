@@ -6,5 +6,7 @@ data class Expanse(
     var amount: Double,
     var description: String,
     var createdDate: Long,
-    var updateTime: Long
-)
+    var updateTime: Long,
+) {
+    var wordCount: Int = 0
+}

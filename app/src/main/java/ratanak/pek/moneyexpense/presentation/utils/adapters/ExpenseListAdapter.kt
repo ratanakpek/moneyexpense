@@ -40,6 +40,7 @@ class ExpenseListAdapter(
                 callback.onClick(this.id)
             }
             holder.binding.tvPrice.text = "${this.amount} $"
+            holder.binding.tvCount.text = "Words: ${this.wordCount}"
         }
     }
 
