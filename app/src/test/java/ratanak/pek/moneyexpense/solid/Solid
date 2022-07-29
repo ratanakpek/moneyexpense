@@ -1,0 +1,14 @@
+SOLID Principles
+Five design principles make software design more understandable, flexible and maintainable. Those principles are:
+
+1. Single Responsibility: Each software component should have only one reason to change – one responsibility.
+
+2. Open-closed: You should be able to extend the behavior of a component, without breaking its usage,
+            or modifying its extensions.
+3. Liskov Substitution: If you have a class of one type, and any subclasses of that class, you should
+                    be able to represent the base class usage with the subclass, without breaking the app.
+
+4. Interface Segregation: It’s better to have many smaller interfaces than a large one, to prevent
+                    the class from implementing the methods that it doesn’t need.
+5. Dependency Inversion: Components should depend on abstractions rather than concrete implementations.
+                        Also higher level modules shouldn’t depend on lower level modules.

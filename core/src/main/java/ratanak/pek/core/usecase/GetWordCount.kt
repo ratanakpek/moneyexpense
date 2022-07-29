@@ -1,13 +1,10 @@
 package ratanak.pek.core.usecase
 
-import android.util.Log
 import ratanak.pek.core.data.Expanse
 
 class GetWordCount {
     operator fun invoke(expanse: Expanse): Int {
-        val count = getCount(expanse.title) + getCount(expanse.description)
-        Log.e("rtk", "Hello $count")
-        return count
+        return getCount(expanse.title) + getCount(expanse.description)
     }
 
     private fun getCount(str: String): Int {
