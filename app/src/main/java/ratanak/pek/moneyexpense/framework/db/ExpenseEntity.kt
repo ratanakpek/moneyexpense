@@ -3,10 +3,10 @@ package ratanak.pek.moneyexpense.framework.db
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import ratanak.pek.core.data.Expanse
+import ratanak.pek.core.data.Expense
 
-@Entity(tableName = "Expanse")
-data class ExpanseEntity(
+@Entity(tableName = "Expense")
+data class ExpenseEntity(
     val title: String,
     val desc: String,
     val amount: Double,
@@ -21,7 +21,7 @@ data class ExpanseEntity(
     val id: Int = 0
 ) {
     companion object {
-        fun fromExpanse(expense: Expanse) = ExpanseEntity(
+        fun fromExpense(expense: Expense) = ExpenseEntity(
             expense.title,
             expense.description,
             expense.amount,
@@ -31,5 +31,5 @@ data class ExpanseEntity(
         )
     }
 
-    fun getExpanse() = Expanse(id, title, amount, desc, createTime, updateTime)
+    fun getExpense() = Expense(id, title, amount, desc, createTime, updateTime)
 }

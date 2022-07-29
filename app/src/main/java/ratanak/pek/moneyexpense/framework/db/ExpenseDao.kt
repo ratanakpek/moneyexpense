@@ -6,14 +6,14 @@ import androidx.room.*
 interface ExpenseDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addExpense(expenseEntity: ExpanseEntity)
+    suspend fun addExpense(expenseEntity: ExpenseEntity)
 
-    @Query("select * from Expanse where id=:expenseId")
-    suspend fun getExpense(expenseId: Int): ExpanseEntity?
+    @Query("select * from Expense where id=:expenseId")
+    suspend fun getExpense(expenseId: Int): ExpenseEntity?
 
-    @Query("select * from Expanse ORDER BY update_time DESC")
-    suspend fun getAll(): List<ExpanseEntity>
+    @Query("select * from Expense ORDER BY update_time DESC")
+    suspend fun getAll(): List<ExpenseEntity>
 
     @Delete
-    suspend fun deleteExpense(expenseEntity: ExpanseEntity)
+    suspend fun deleteExpense(expenseEntity: ExpenseEntity)
 }

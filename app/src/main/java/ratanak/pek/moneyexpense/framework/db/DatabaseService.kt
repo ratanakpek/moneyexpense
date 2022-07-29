@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [ExpanseEntity::class], version = 1)
+@Database(entities = [ExpenseEntity::class], version = 1)
 abstract class DatabaseService : RoomDatabase() {
 
     abstract fun expenseDao(): ExpenseDao

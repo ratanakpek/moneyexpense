@@ -1,27 +1,27 @@
 package ratanak.pek.moneyexpense.framework
 
 import android.content.Context
-import ratanak.pek.core.data.Expanse
-import ratanak.pek.core.repository.ExpanseDataSource
+import ratanak.pek.core.data.Expense
+import ratanak.pek.core.repository.ExpenseDataSource
 import ratanak.pek.moneyexpense.framework.db.DatabaseService
-import ratanak.pek.moneyexpense.framework.db.ExpanseEntity
+import ratanak.pek.moneyexpense.framework.db.ExpenseEntity
 
-class RoomExpenseDatasource(context: Context): ExpanseDataSource{
+class RoomExpenseDatasource(context: Context): ExpenseDataSource{
     val dao = DatabaseService.getInstance(context).expenseDao()
 
-    override suspend fun createExpanse(expanse: Expanse) {
-       dao.addExpense(ExpanseEntity.fromExpanse(expanse))
+    override suspend fun createExpense(expense: Expense) {
+       dao.addExpense(ExpenseEntity.fromExpense(expense))
     }
 
-    override suspend fun getExpanse(id: Int): Expanse? {
-       return dao.getExpense(id)?.getExpanse()
+    override suspend fun getExpense(id: Int): Expense? {
+       return dao.getExpense(id)?.getExpense()
     }
 
-    override suspend fun getAll(): List<Expanse> {
-        return dao.getAll().map { it.getExpanse() }
+    override suspend fun getAll(): List<Expense> {
+        return dao.getAll().map { it.getExpense() }
     }
 
-    override suspend fun remove(expanse: Expanse) {
-        dao.deleteExpense(ExpanseEntity.fromExpanse(expanse))
+    override suspend fun remove(expense: Expense) {
+        dao.deleteExpense(ExpenseEntity.fromExpense(expense))
     }
 }

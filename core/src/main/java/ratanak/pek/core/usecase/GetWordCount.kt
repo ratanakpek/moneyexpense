@@ -1,10 +1,10 @@
 package ratanak.pek.core.usecase
 
-import ratanak.pek.core.data.Expanse
+import ratanak.pek.core.data.Expense
 
 class GetWordCount {
-    operator fun invoke(expanse: Expanse): Int {
-        return getCount(expanse.title) + getCount(expanse.description)
+    operator fun invoke(expense: Expense): Int {
+        return getCount(expense.title) + getCount(expense.description)
     }
 
     private fun getCount(str: String): Int {

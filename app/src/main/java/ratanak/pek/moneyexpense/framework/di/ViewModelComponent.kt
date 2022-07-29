@@ -1,7 +1,7 @@
 package ratanak.pek.moneyexpense.framework.di
 
 import dagger.Component
-import ratanak.pek.moneyexpense.presentation.ui.expanse.ExpenseDetailViewModel
+import ratanak.pek.moneyexpense.presentation.ui.expense.ExpenseDetailViewModel
 import ratanak.pek.moneyexpense.presentation.ui.home.HomeViewModel
 
 @Component(modules = [ApplicationModule::class, RepositoryModule::class, UsecaseModule::class])

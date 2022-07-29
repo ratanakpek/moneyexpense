@@ -11,7 +11,7 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/gotoExpanseDetail"
+            android:id="@+id/gotoExpenseDetail"
             app:destination="@id/expanseDetailFragment" />
     </fragment>
 
@@ -28,7 +28,7 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/expanseDetailFragment"
-        android:name="ratanak.pek.moneyexpense.presentation.ui.expanse.ExpanseDetailFragment"
+        android:name="ratanak.pek.moneyexpense.presentation.ui.expense.ExpanseDetailFragment"
         android:label="fragment_expanse_detail"
         tools:layout="@layout/fragment_expanse_detail" >
         <argument

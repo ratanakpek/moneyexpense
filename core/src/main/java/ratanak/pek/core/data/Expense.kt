@@ -1,6 +1,6 @@
 package ratanak.pek.core.data
 
-data class Expanse(
+data class Expense(
     var id: Int,
     var title: String,
     var amount: Double,

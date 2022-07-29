@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ratanak.pek.core.data.Expanse
+import ratanak.pek.core.data.Expense
 import ratanak.pek.moneyexpense.framework.UseCases
 import ratanak.pek.moneyexpense.framework.di.ApplicationModule
 import ratanak.pek.moneyexpense.framework.di.DaggerViewModelComponent
@@ -25,11 +25,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             .inject(this)
     }
 
-    val allExpense = MutableLiveData<List<Expanse>>()
+    val allExpense = MutableLiveData<List<Expense>>()
 
     fun getExpenseList() {
         coroutineScope.launch {
-            val expenseList = usecase.getAllExpanse.invoke()
+            val expenseList = usecase.getAllExpense.invoke()
             expenseList.forEach {
                 it.wordCount = usecase.getWordCount.invoke(it)
             }

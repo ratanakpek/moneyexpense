@@ -1,10 +1,9 @@
-package ratanak.pek.moneyexpense.presentation.ui.expanse
+package ratanak.pek.moneyexpense.presentation.ui.expense
 
 
 import android.app.AlertDialog
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
@@ -13,14 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import ratanak.pek.core.data.Expanse
+import ratanak.pek.core.data.Expense
 import ratanak.pek.moneyexpense.R
 import ratanak.pek.moneyexpense.databinding.FragmentExpanseDetailBinding
 
 class ExpanseDetailFragment : Fragment() {
     private lateinit var viewModel: ExpenseDetailViewModel
     private var noteId = 0
-    private var currentExpense = Expanse(0, "", 10.0, "", 0, 0)
+    private var currentExpense = Expense(0, "", 10.0, "", 0, 0)
 
     private lateinit var _binding: FragmentExpanseDetailBinding
 
@@ -63,7 +62,7 @@ class ExpanseDetailFragment : Fragment() {
         }
 
         if (noteId != 0) {
-            viewModel.getExpanse(noteId)
+            viewModel.getExpense(noteId)
         }
         observeViewModel()
     }

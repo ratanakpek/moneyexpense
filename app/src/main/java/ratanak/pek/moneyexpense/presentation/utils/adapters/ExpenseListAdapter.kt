@@ -3,14 +3,14 @@ package ratanak.pek.moneyexpense.presentation.utils.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ratanak.pek.core.data.Expanse
+import ratanak.pek.core.data.Expense
 import ratanak.pek.moneyexpense.databinding.ItemExpenseViewBinding
 import ratanak.pek.moneyexpense.presentation.utils.callback.ListAction
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ExpenseListAdapter(
-    private val expenseList: ArrayList<Expanse>,
+    private val expenseList: ArrayList<Expense>,
     private val callback: ListAction
 ) :
     RecyclerView.Adapter<ExpenseListAdapter.ExpenseViewHolder>() {
@@ -23,7 +23,7 @@ class ExpenseListAdapter(
         return ExpenseViewHolder(binding)
     }
 
-    fun add(newExpense: List<Expanse>) {
+    fun add(newExpense: List<Expense>) {
         expenseList.clear()
         expenseList.addAll(newExpense)
         notifyDataSetChanged()

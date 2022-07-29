@@ -1,4 +1,4 @@
-package ratanak.pek.moneyexpense.presentation.ui.expanse
+package ratanak.pek.moneyexpense.presentation.ui.expense
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ratanak.pek.core.data.Expanse
+import ratanak.pek.core.data.Expense
 import ratanak.pek.moneyexpense.framework.UseCases
 import ratanak.pek.moneyexpense.framework.di.ApplicationModule
 import ratanak.pek.moneyexpense.framework.di.DaggerViewModelComponent
@@ -27,24 +27,24 @@ class ExpenseDetailViewModel(application: Application) : AndroidViewModel(applic
     lateinit var usecase: UseCases
 
     val saved = MutableLiveData<Boolean>()
-    val currentExpense = MutableLiveData<Expanse?>()
+    val currentExpense = MutableLiveData<Expense?>()
 
-    fun saveExpense(expanse: Expanse) {
+    fun saveExpense(expense: Expense) {
         coroutineScope.launch {
-            usecase.createExpanse.invoke(expanse)
+            usecase.createExpense.invoke(expense)
             saved.postValue(true)
         }
     }
 
-    fun getExpanse(id: Int) {
+    fun getExpense(id: Int) {
         coroutineScope.launch {
-            currentExpense.postValue(usecase.getExpanse.invoke(id))
+            currentExpense.postValue(usecase.getExpense.invoke(id))
         }
     }
 
-    fun deleteExpense(expanse: Expanse) {
+    fun deleteExpense(expense: Expense) {
         coroutineScope.launch {
-            usecase.removeExpanse.invoke(expanse)
+            usecase.removeExpense.invoke(expense)
             saved.postValue(true)
         }
     }
