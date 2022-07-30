@@ -31,7 +31,7 @@ class ExpenseListAdapter(
 
     override fun onBindViewHolder(holder: ExpenseViewHolder, position: Int) {
         with(expenseList[position]) {
-            holder.binding.tvTittle.text = this.title
+            holder.binding.tvTittle.text = this.title.plus(showDays(this.daysCount))
             holder.binding.tvContent.text = this.description
             val sdf = SimpleDateFormat("MMM dd, HH:mm:ss")
             val resultDate = Date(this.updateTime)
@@ -43,6 +43,12 @@ class ExpenseListAdapter(
             holder.binding.tvCount.text = "Words: ${this.wordCount}"
         }
     }
+
+    private fun showDays(day: Int): String {
+        return if (day >= 1) day.toString().plus(dayFormat(day)) else ""
+    }
+
+    private fun dayFormat(day: Int) = if (day > 1) " days" else " day"
 
     override fun getItemCount(): Int {
         return expenseList.size

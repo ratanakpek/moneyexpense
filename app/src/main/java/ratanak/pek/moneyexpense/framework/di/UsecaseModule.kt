@@ -15,6 +15,7 @@ class UsecaseModule {
         GetAllExpense(repository),
         GetExpense(repository),
         RemoveExpense(repository),
-        GetWordCount()
+        GetWordCount(),
+        GetExpenseOutOfDate()
     )
 }

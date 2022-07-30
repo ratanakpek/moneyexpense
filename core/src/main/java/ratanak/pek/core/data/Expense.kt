@@ -9,4 +9,5 @@ data class Expense(
     var updateTime: Long,
 ) {
     var wordCount: Int = 0
+    var daysCount: Int = 0
 }

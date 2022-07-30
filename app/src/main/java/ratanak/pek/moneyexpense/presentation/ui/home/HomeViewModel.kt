@@ -32,6 +32,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             val expenseList = usecase.getAllExpense.invoke()
             expenseList.forEach {
                 it.wordCount = usecase.getWordCount.invoke(it)
+                it.daysCount = usecase.getExpenseOutOfDate.invoke(it)
             }
             allExpense.postValue(expenseList)
         }

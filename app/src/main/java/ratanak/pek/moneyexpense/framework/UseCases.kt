@@ -7,5 +7,6 @@ data class UseCases(
     val getAllExpense: GetAllExpense,
     val getExpense: GetExpense,
     val removeExpense: RemoveExpense,
-    val getWordCount: GetWordCount
+    val getWordCount: GetWordCount,
+    val getExpenseOutOfDate: GetExpenseOutOfDate
 )

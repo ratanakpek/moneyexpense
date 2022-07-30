@@ -1,11 +1,8 @@
 package ratanak.pek.moneyexpense.datejava8
 
 import org.junit.Test
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.LocalTime
-import java.time.ZoneId
-import java.time.ZonedDateTime
+import ratanak.pek.core.usecase.GetExpenseOutOfDate
+import java.time.*
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
@@ -81,6 +78,33 @@ class DateFormatUtilTest {
 
         val zonedDateTime = ZonedDateTime.of(LocalDateTime.now(), zoneId)
         println(zonedDateTime)
+    }
+
+    @Test
+    fun findRemainDays() {
+        val utc = ZoneId.of("UTC")
+        val now = ZonedDateTime.now(utc)
+        val twoDaysFromNow = now.plusDays(2)
+
+        val remainingDays = ChronoUnit.DAYS.between(now, twoDaysFromNow)
+
+        println(
+            String.format("%d days", remainingDays)
+        )
+    }
+
+    @Test
+    fun getDaysByJava8Test() {
+        val testCase = GetExpenseOutOfDate()
+        val remainDays = testCase.getDaysByJava8(1659051024000)
+        println(remainDays)
+    }
+
+    @Test
+    fun getDaysByLegacyTest() {
+        val testCase = GetExpenseOutOfDate()
+        val remainDays = testCase.getDaysByLegacy(1659051024000)
+        println("Days $remainDays")
     }
 
 
