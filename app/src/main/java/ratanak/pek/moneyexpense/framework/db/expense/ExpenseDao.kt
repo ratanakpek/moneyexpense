@@ -1,4 +1,4 @@
-package ratanak.pek.moneyexpense.framework.db
+package ratanak.pek.moneyexpense.framework.db.expense
 
 import androidx.room.*
 

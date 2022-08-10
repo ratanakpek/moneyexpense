@@ -1,12 +1,13 @@
-package ratanak.pek.moneyexpense.framework
+package ratanak.pek.moneyexpense.framework.expense
 
 import android.content.Context
 import ratanak.pek.core.data.Expense
-import ratanak.pek.core.repository.ExpenseDataSource
+import ratanak.pek.core.repository.expense.ExpenseDataSource
 import ratanak.pek.moneyexpense.framework.db.DatabaseService
-import ratanak.pek.moneyexpense.framework.db.ExpenseEntity
+import ratanak.pek.moneyexpense.framework.db.expense.ExpenseEntity
 
-class RoomExpenseDatasource(context: Context): ExpenseDataSource{
+
+class RoomExpenseDatasource(context: Context): ExpenseDataSource {
     val dao = DatabaseService.getInstance(context).expenseDao()
 
     override suspend fun createExpense(expense: Expense) {

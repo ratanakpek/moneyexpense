@@ -1,7 +1,7 @@
 package ratanak.pek.moneyexpense.datejava8
 
 import org.junit.Test
-import ratanak.pek.core.usecase.GetExpenseOutOfDate
+import ratanak.pek.core.usecase.expense.GetExpenseOutOfDate
 import java.time.*
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit

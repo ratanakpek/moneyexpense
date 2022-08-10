@@ -4,11 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import ratanak.pek.moneyexpense.framework.db.expense.ExpenseDao
+import ratanak.pek.moneyexpense.framework.db.expense.ExpenseEntity
+import ratanak.pek.moneyexpense.framework.db.notification.NotificationDao
+import ratanak.pek.moneyexpense.framework.db.notification.NotificationEntity
 
-@Database(entities = [ExpenseEntity::class], version = 1)
+@Database(entities = [ExpenseEntity::class, NotificationEntity::class], version = 2)
 abstract class DatabaseService : RoomDatabase() {
 
     abstract fun expenseDao(): ExpenseDao
+
+    abstract fun notificationDao(): NotificationDao
 
     companion object {
         private const val DATABASE_NAME = "expense.db"

@@ -1,4 +1,4 @@
-package ratanak.pek.core.repository
+package ratanak.pek.core.repository.expense
 
 import ratanak.pek.core.data.Expense
 

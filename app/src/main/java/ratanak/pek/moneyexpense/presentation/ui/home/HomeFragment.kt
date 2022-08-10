@@ -16,7 +16,6 @@ class HomeFragment : Fragment(), ListAction {
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var _adapter: ExpenseListAdapter
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,14 +24,14 @@ class HomeFragment : Fragment(), ListAction {
         homeViewModel =
             ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        _binding.addExpanse.setOnClickListener {
-            gotoExpenseDetail()
-        }
         return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding.addExpanse.setOnClickListener {
+            gotoExpenseDetail()
+        }
         homeViewModel.getExpenseList()
         observeExpenseList()
         setupAdapter()

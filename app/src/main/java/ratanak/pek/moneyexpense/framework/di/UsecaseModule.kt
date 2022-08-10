@@ -2,9 +2,11 @@ package ratanak.pek.moneyexpense.framework.di
 
 import dagger.Module
 import dagger.Provides
-import ratanak.pek.core.repository.ExpenseRepository
-import ratanak.pek.core.usecase.*
-import ratanak.pek.moneyexpense.framework.UseCases
+import ratanak.pek.core.repository.expense.ExpenseRepository
+import ratanak.pek.core.repository.notification.NotificationRepository
+import ratanak.pek.core.usecase.expense.*
+import ratanak.pek.moneyexpense.framework.expense.UseCases
+import ratanak.pek.moneyexpense.framework.notification.NotificationUseCases
 
 @Module
 class UsecaseModule {
@@ -18,4 +20,7 @@ class UsecaseModule {
         GetWordCount(),
         GetExpenseOutOfDate()
     )
+
+    @Provides
+    fun getNotificationUseCase(repository: NotificationRepository) = NotificationUseCases(repository)
 }

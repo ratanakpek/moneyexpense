@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ratanak.pek.core.data.Expense
-import ratanak.pek.moneyexpense.framework.UseCases
+import ratanak.pek.moneyexpense.framework.expense.UseCases
 import ratanak.pek.moneyexpense.framework.di.ApplicationModule
 import ratanak.pek.moneyexpense.framework.di.DaggerViewModelComponent
 import javax.inject.Inject

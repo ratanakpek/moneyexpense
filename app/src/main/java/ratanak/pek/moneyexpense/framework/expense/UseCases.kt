@@ -1,6 +1,6 @@
-package ratanak.pek.moneyexpense.framework
+package ratanak.pek.moneyexpense.framework.expense
 
-import ratanak.pek.core.usecase.*
+import ratanak.pek.core.usecase.expense.*
 
 data class UseCases(
     var createExpense: CreateExpense,

@@ -1,4 +1,4 @@
-package ratanak.pek.core.usecase
+package ratanak.pek.core.usecase.expense
 
 import ratanak.pek.core.data.Expense
 
