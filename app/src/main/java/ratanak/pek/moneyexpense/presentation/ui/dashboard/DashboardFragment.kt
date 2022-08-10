@@ -11,20 +11,24 @@ import ratanak.pek.moneyexpense.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
     private lateinit var _binding: FragmentDashboardBinding
+    private lateinit var dashboardViewModel: DashboardViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
+        dashboardViewModel =
             ViewModelProvider(this)[DashboardViewModel::class.java]
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        return _binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val textView: TextView = _binding.textDashboard
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
-        return _binding.root
     }
 }

@@ -41,7 +41,6 @@ class ExpanseDetailFragment : Fragment() {
         arguments?.let {
             noteId = ExpanseDetailFragmentArgs.fromBundle(it).expanseId
         }
-        // viewModel = ViewModelProviders.of(this).get(ExpenseDetailViewModel::class.java)
         viewModel = ViewModelProvider(this)[ExpenseDetailViewModel::class.java]
         _binding.btnSave.setOnClickListener {
             if (isAllEditNotEmpty()) {

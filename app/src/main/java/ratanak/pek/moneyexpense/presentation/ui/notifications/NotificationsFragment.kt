@@ -7,17 +7,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import ratanak.pek.moneyexpense.databinding.FragmentNotificationsBinding
+import ratanak.pek.moneyexpense.presentation.ui.home.HomeFragmentDirections
 import ratanak.pek.moneyexpense.presentation.ui.home.HomeViewModel
 
 class NotificationsFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private lateinit var _binding: FragmentNotificationsBinding
     private lateinit var viewModel: NotificationsViewModel
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,19 +28,21 @@ class NotificationsFragment : Fragment() {
     ): View {
         viewModel =
             ViewModelProvider(this)[NotificationsViewModel::class.java]
-
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return _binding.root
+    }
 
-        val textView: TextView = binding.textNotifications
-        viewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding.add.setOnClickListener {
+            gotoExpenseDetail()
         }
-        return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun gotoExpenseDetail(id: Int = 0) {
+        NotificationsFragmentDirections.gotoCreateNotification().also {
+            Navigation.findNavController(_binding.rvList).navigate(it)
+        }
     }
+
 }
