@@ -16,3 +16,4 @@ rootProject.name = "MoneyExpense"
 include ':app'
 include ':core'
 include ':designpattern'
+include ':tdd'
